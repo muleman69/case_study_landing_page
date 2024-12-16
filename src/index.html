@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Buildable Case Studies</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0C131A;
+      color: #FFFFFF;
+    }
+
+    /* Softened hero angle gradient and added more transparency to reveal video */
+    .hero-angle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(105deg, rgba(3,30,38,0.95) 30%, rgba(3,30,38,0.5) 50%, rgba(3,30,38,0) 80%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Subtle grain overlay */
+    .grain-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .hero-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+      transition: background 0.3s ease;
+    }
+
+    .category-title {
+      display: inline-block;
+      background: #00D19A;
+      color: #031E26;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .case-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    }
+
+    .case-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 209, 154, 0.5);
+      filter: brightness(1.05);
+    }
+
+    /* New Styles for Title Bar Below Image */
+    .card-title-bar {
+      background: #00D19A;
+      padding: 0.75rem 1rem;
+    }
+
+    .card-title-bar h4 {
+      color: #031E26;
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-title-bar p {
+      color: #031E26;
+      font-size: 0.875rem;
+    }
+
+    /* Container that will hold and angle the video on the right side */
+    .hero-video-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 98%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 5;
+      /* Adjust the clip-path to match the desired angled shape */
+      clip-path: polygon(100% 0, 100% 100%, 60% 100%);
+    }
+
+    /* Make sure the video covers its container */
+    .hero-video-container video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body class="text-white">
+  <!-- Header -->
+  <header class="w-full bg-[#0C131A] border-b border-gray-700 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#">
+        <img 
+          src="https://ik.imagekit.io/buildable/buildable-logo-white.png?updatedAt=1734077583752" 
+          alt="Buildable Logo" 
+          class="h-8"
+        />
+      </a>
+      <nav class="hidden md:flex items-center space-x-6">
+  <a href="#" class="text-gray-300 hover:text-[#00D19A] transition duration-300">Home</a>
+  <a href="#" class="text-gray-300 hover:text-[#00D19A] transition duration-300">Case Studies</a>
+  <a href="#" class="text-gray-300 hover:text-[#00D19A] transition duration-300">About</a>
+  <a href="#" class="bg-[#00D19A] text-black px-6 py-2 rounded-md hover:bg-[#00e4a7] transition duration-300">Contact</a>
+</nav>
+    </div>
+  </header>
+
+  <!-- Hero Section with angled video on the right -->
+  <section class="relative w-full min-h-[80vh] bg-[#0C131A] flex items-center overflow-hidden">
+    <div class="hero-angle"></div>
+    <div class="grain-overlay"></div>
+    
+    <!-- Video on the right side -->
+    <div class="hero-video-container hidden md:block">
+      <video autoplay muted loop playsinline>
+        <source src="https://ik.imagekit.io/buildable/Book%20Video.mp4?updatedAt=1734083693337" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="container mx-auto px-6 py-20 relative z-30 flex flex-col md:flex-row items-center justify-between">
+      <div class="md:w-1/2 space-y-6 hero-content">
+        <h1 class="text-5xl md:text-6xl font-bold max-w-xl leading-tight">
+          From Paper to Profit: Revolutionizing Book Discovery with AI
+        </h1>
+        <p class="text-gray-300 max-w-md text-lg">
+          Get to know our work and get inspired by these stories of reinvention.
+        </p>
+        <div class="flex items-center space-x-4 text-gray-400 text-sm">
+          <span>Client: Goodreads</span>
+          <span>|</span>
+          <span>Publishing</span>
+          <span>|</span>
+          <span>Global</span>
+        </div>
+        <a href="#casestudies" 
+           class="inline-block bg-[#00D19A] text-black font-semibold py-3 px-8 rounded-md hover:bg-[#00e4a7] transition-all duration-300 mt-4 transform hover:scale-105">
+          Read More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search / Intro Section -->
+  <section id="casestudies" class="container mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold mb-4">Our Work</h2>
+    <p class="text-gray-300 max-w-2xl mb-8">
+      Browse through our collection of stories, each showcasing a unique challenge and the innovative solutions we brought to life.
+    </p>
+    <div class="relative mb-12 max-w-lg">
+      <input 
+        type="text"
+        placeholder="Search case studies..."
+        class="w-full bg-[#031E26] text-white placeholder-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#00D19A] transition duration-300"
+      />
+      <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#00D19A]">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" 
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" 
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          </path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Healthcare Innovations -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Healthcare Innovations</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Blood Pressure Breakthrough -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg transition duration-300 case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Blood%20Pressure_POq3Ea_ss?updatedAt=1734045340839" 
+              alt="Healthcare data"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Healthcare</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Blood Pressure Breakthrough: Making Hypertension Data Actionable</h4>
+            <p>Transformed raw readings into visual insights for life-saving interventions.</p>
+          </div>
+        </div>
+        <!-- Heart Failure Monitoring -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg transition duration-300 case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Heart%20Monitoring%20Breakthrough_LvUW4Gkyn?updatedAt=1734045471712"
+              alt="Remote monitoring"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Healthcare</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Life-Saving Data: A Heart Failure Monitoring Breakthrough</h4>
+            <p>Connected patients, doctors, and wearables for proactive cardiac care.</p>
+          </div>
+        </div>
+        <!-- Brain Health -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg transition duration-300 case-card">
+          <div class="relative h-48">
+            <img
+              src="https://ik.imagekit.io/buildable/Futuristic%20Health%20Lab.jpeg?updatedAt=1734073542996"
+              alt="Neurology tools"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Healthcare</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Brain Health Breakthrough: Building HIPAA-Compliant Neurology Tools</h4>
+            <p>Secured, FDA-compliant solutions that enhance patient assessment and care.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data-Driven Discoveries -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Data-Driven Discoveries</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Geothermal Data -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Geothermal%20Data.jpeg?updatedAt=1734073740779" 
+              alt="Geothermal data"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Energy</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Real-Time Revolution: Making Sense of Critical Geothermal Data</h4>
+            <p>Delivered true real-time monitoring for high-stakes drilling decisions.</p>
+          </div>
+        </div>
+        <!-- Land Investment Intelligence -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img
+              src="https://ik.imagekit.io/buildable/Real%20Estate%20Investor.jpeg?updatedAt=1734074074136"
+              alt="Land investment"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Real Estate</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Land Investment Intelligence: Turning Market Data Into Deals</h4>
+            <p>Consolidated scattered market info into a single deal-making platform.</p>
+          </div>
+        </div>
+        <!-- Economic Modeling -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img
+              src="https://ik.imagekit.io/buildable/Economic%20Model.jpeg?updatedAt=1734074252807"
+              alt="Economic modeling"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Finance</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Economic Modeling Made Clear: Complex Analytics Anyone Can Use</h4>
+            <p>Transformed daunting actuarial algorithms into user-friendly insights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scaling Digital Experiences -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Scaling Digital Experiences</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- CatholicTV -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Catholic%20TV.jpeg?updatedAt=1734074430766"
+              alt="CatholicTV"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Media</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Scaling Faith: How We Helped CatholicTV Handle 1000x More Viewers</h4>
+            <p>Rebuilt their platform to handle 10 million concurrent users seamlessly.</p>
+          </div>
+        </div>
+        <!-- DOS to Digital -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img
+              src="https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Legacy insurance"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Insurance</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>From DOS to Digital: Rescuing a 35-Year Legacy Insurance System</h4>
+            <p>Modernized mission-critical software without disrupting vital operations.</p>
+          </div>
+        </div>
+        <!-- Emergency Response -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Emergency%20Crisis%20Hotline.jpeg?updatedAt=1734074562151"
+              alt="Emergency resources"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Social Services</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Emergency Response: Building a Lifeline for Crisis Resource Access</h4>
+            <p>Unified mental health, food security, and crisis resources in one platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transforming Industries -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Transforming Industries</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Book Discovery with AI -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/IMG_7504.JPG?updatedAt=1734044145794"
+              alt="Book discovery"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Publishing</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>From Paper to Profit: Revolutionizing Book Discovery with AI</h4>
+            <p>Leveraged AI to match readers with truly relevant recommendations.</p>
+          </div>
+        </div>
+        <!-- Construction Quoting -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Construction%20quoting.jpeg?updatedAt=1734076276116"
+              alt="Construction quoting"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Construction</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Construction Quoting Revolution: Connecting PlanSwift to Real-Time Pricing</h4>
+            <p>Integrated ERP data to ensure contractors always quote with current prices.</p>
+          </div>
+        </div>
+        <!-- Pay Equity -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Gender%20Equality.jpeg?updatedAt=1734076476851"
+              alt="Pay equity"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">HR/Compliance</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Pay Equity Made Possible: Eliminating Salary Discrimination at Scale</h4>
+            <p>Automated compliance to ensure fair compensation across organizations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Community Empowerment -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Community Empowerment</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Community Card 1 -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Volunteers.jpeg?updatedAt=1734077461169"
+              alt="Community engagement platform"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Nonprofit</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Grassroots to Global: Scaling Community Engagement Tools</h4>
+            <p>Enhanced local volunteer platforms to serve global outreach efforts.</p>
+          </div>
+        </div>
+        <!-- Community Card 2 -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Building%20Bridges.jpeg?updatedAt=1734077208671"
+              alt="Community resource hub"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Social Impact</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Building Bridges: A Community Resource Hub for All Ages</h4>
+            <p>Unified resources from education to eldercare, accessible by any device.</p>
+          </div>
+        </div>
+        <!-- Community Card 3 -->
+        <div class="bg-[#031E26] rounded-lg overflow-hidden shadow-lg case-card">
+          <div class="relative h-48">
+            <img 
+              src="https://ik.imagekit.io/buildable/Economic%20Model.jpeg?updatedAt=1734077012814"
+              alt="Community data insights"
+              class="object-cover w-full h-full"
+            />
+            <div class="card-overlay absolute inset-0 p-4 flex flex-col justify-end">
+              <span class="category-title">Civic Tech</span>
+            </div>
+          </div>
+          <div class="card-title-bar">
+            <h4>Data for Good: Turning Neighborhood Insights Into Action</h4>
+            <p>Leveraged analytics to inform policy and drive meaningful social change.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full bg-[#0C131A] border-t border-gray-700 mt-12 py-6">
+    <div class="container mx-auto px-6 text-center text-gray-400 text-sm">
+      © 2024 Buildable. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroImage = document.querySelector('.hero-content img');
+      if (heroImage) {
+        heroImage.style.transform = `perspective(1000px) rotateY(-15deg) translateY(${scrolled * 0.1}px)`;
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
